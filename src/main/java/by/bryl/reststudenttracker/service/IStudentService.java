@@ -1,5 +1,6 @@
 package by.bryl.reststudenttracker.service;
 
+import by.bryl.reststudenttracker.exception.ServiceException;
 import by.bryl.reststudenttracker.model.Student;
 
 import java.util.List;
@@ -12,7 +13,9 @@ import java.util.List;
 
 public interface IStudentService {
     List<Student> getStudents();
-    Student getStudentById(int id);
-    Student saveStudent(Student student);
-    void deleteStudentById(int id);
+    Student getStudentById(int id) throws ServiceException;
+    Student addStudent(Student student);
+    Student updateStudent(Student student) throws ServiceException;
+    void deleteStudentById(int id) throws ServiceException;
+    boolean isExistById(int id);
 }

@@ -1,5 +1,6 @@
 package by.bryl.reststudenttracker.controller;
 
+import by.bryl.reststudenttracker.exception.ServiceException;
 import by.bryl.reststudenttracker.model.Student;
 import by.bryl.reststudenttracker.service.IStudentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,23 +38,23 @@ public class StudentRestController {
     }
 
     @GetMapping("/list/{id}")
-    public Student getStudent(@PathVariable int id){
+    public Student getStudent(@PathVariable int id) throws ServiceException {
         return studentService.getStudentById(id);
     }
 
     @PostMapping("/list")
     public Student saveStudent(@RequestBody Student student) {
-        student.setId(0);
-        return studentService.saveStudent(student);
+        return studentService.addStudent(student);
     }
 
     @PutMapping("/list")
-    public Student updateStudent(@RequestBody Student student) {
-        return studentService.saveStudent(student);
+    public Student updateStudent(@RequestBody Student student) throws ServiceException {
+        return studentService.updateStudent(student);
     }
 
     @DeleteMapping("/list/{id}")
-    public String deleteStudent(@PathVariable int id){
-        return "Deleted employee id " + id;
+    public String deleteStudent(@PathVariable int id) throws ServiceException {
+        studentService.deleteStudentById(id);
+        return "Deleted employee id: " + id;
     }
 }

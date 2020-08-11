@@ -1,0 +1,60 @@
+package by.bryl.reststudenttracker.error;
+
+import org.springframework.http.HttpStatus;
+
+import java.sql.Timestamp;
+
+/**
+ * Error response for user requests
+ *
+ * @author Andrew Bryl
+ */
+
+public class StudentErrorResponse {
+    private Timestamp timestamp;
+    private int status;
+    private HttpStatus error;
+    private String message;
+
+    public StudentErrorResponse() {
+    }
+
+    public StudentErrorResponse(Timestamp timestamp, int status, HttpStatus error, String message) {
+        this.timestamp = timestamp;
+        this.status = status;
+        this.error = error;
+        this.message = message;
+    }
+
+    public Timestamp getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(Timestamp timestamp) {
+        this.timestamp = timestamp;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
+    public HttpStatus getError() {
+        return error;
+    }
+
+    public void setError(HttpStatus error) {
+        this.error = error;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+}
