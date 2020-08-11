@@ -6,6 +6,7 @@ That's a simple REST CRUD API with one entity - *Student*, that allows to list, 
 * Spring Boot
 * Spring MVC
 * Spring Data JPA
+* Spring REST
 
 **Database:**
 * MySQL
