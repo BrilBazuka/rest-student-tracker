@@ -3,6 +3,7 @@ package by.bryl.reststudenttracker.error;
 import org.springframework.http.HttpStatus;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 /**
  * Error response for user requests
@@ -14,16 +15,16 @@ public class StudentErrorResponse {
     private Timestamp timestamp;
     private int status;
     private HttpStatus error;
-    private String message;
+    private List<String> messages;
 
     public StudentErrorResponse() {
     }
 
-    public StudentErrorResponse(Timestamp timestamp, int status, HttpStatus error, String message) {
+    public StudentErrorResponse(Timestamp timestamp, int status, HttpStatus error, List<String> messages) {
         this.timestamp = timestamp;
         this.status = status;
         this.error = error;
-        this.message = message;
+        this.messages = messages;
     }
 
     public Timestamp getTimestamp() {
@@ -50,11 +51,11 @@ public class StudentErrorResponse {
         this.error = error;
     }
 
-    public String getMessage() {
-        return message;
+    public List<String> getMessages() {
+        return messages;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void setMessages(List<String> messages) {
+        this.messages = messages;
     }
 }
