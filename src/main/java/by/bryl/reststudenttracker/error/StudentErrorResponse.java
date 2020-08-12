@@ -15,16 +15,16 @@ public class StudentErrorResponse {
     private Timestamp timestamp;
     private int status;
     private HttpStatus error;
-    private List<String> messages;
+    private List<String> message;
 
     public StudentErrorResponse() {
     }
 
-    public StudentErrorResponse(Timestamp timestamp, int status, HttpStatus error, List<String> messages) {
+    public StudentErrorResponse(Timestamp timestamp, int status, HttpStatus error, List<String> message) {
         this.timestamp = timestamp;
         this.status = status;
         this.error = error;
-        this.messages = messages;
+        this.message = message;
     }
 
     public Timestamp getTimestamp() {
@@ -51,11 +51,11 @@ public class StudentErrorResponse {
         this.error = error;
     }
 
-    public List<String> getMessages() {
-        return messages;
+    public List<String> getMessage() {
+        return message;
     }
 
-    public void setMessages(List<String> messages) {
-        this.messages = messages;
+    public void setMessage(List<String> message) {
+        this.message = message;
     }
 }

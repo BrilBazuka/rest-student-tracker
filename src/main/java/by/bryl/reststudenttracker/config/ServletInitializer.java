@@ -1,5 +1,6 @@
-package by.bryl.reststudenttracker;
+package by.bryl.reststudenttracker.config;
 
+import by.bryl.reststudenttracker.RestStudentTrackerApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
