@@ -1,14 +1,14 @@
 package by.bryl.reststudenttracker.exception;
 
-import by.bryl.reststudenttracker.service.implementation.StudentService;
+import by.bryl.reststudenttracker.service.implementation.StudentServiceImpl;
 
 /**
- * Exception for {@link StudentService} class
+ * Exception for {@link StudentServiceImpl} class
  *
  * @author Andrew Bryl
  */
 
-public class ServiceException extends Exception {
+public class ServiceException extends RuntimeException {
     public ServiceException(String message) {
         super(message);
     }

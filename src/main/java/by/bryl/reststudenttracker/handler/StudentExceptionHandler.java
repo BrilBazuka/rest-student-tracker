@@ -2,6 +2,8 @@ package by.bryl.reststudenttracker.handler;
 
 import by.bryl.reststudenttracker.error.StudentErrorResponse;
 import by.bryl.reststudenttracker.exception.ServiceException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
@@ -9,7 +11,6 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
-import org.springframework.web.servlet.NoHandlerFoundException;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -26,9 +27,11 @@ import java.util.stream.Collectors;
 @ControllerAdvice
 public class StudentExceptionHandler {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(StudentExceptionHandler.class);
+
     @ExceptionHandler
     public ResponseEntity<StudentErrorResponse> handleException(ServiceException exc) {
-
+        LOGGER.warn("Exception occurred " + exc);
         StudentErrorResponse response = buildResponse(exc, HttpStatus.NOT_FOUND);
 
         return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
@@ -36,6 +39,7 @@ public class StudentExceptionHandler {
 
     @ExceptionHandler
     public ResponseEntity<StudentErrorResponse> handleException(MethodArgumentNotValidException exc) {
+        LOGGER.warn("Exception occurred " + exc);
         StudentErrorResponse response = new StudentErrorResponse();
 
         List<String> message = exc.getBindingResult()
@@ -54,6 +58,7 @@ public class StudentExceptionHandler {
 
     @ExceptionHandler
     public ResponseEntity<StudentErrorResponse> handleException(MethodArgumentTypeMismatchException exc) {
+        LOGGER.warn("Exception occurred " + exc);
 
         StudentErrorResponse response = buildResponse(exc, HttpStatus.BAD_REQUEST);
 
@@ -62,6 +67,7 @@ public class StudentExceptionHandler {
 
     @ExceptionHandler
     public ResponseEntity<StudentErrorResponse> handleException(HttpRequestMethodNotSupportedException exc) {
+        LOGGER.warn("Exception occurred " + exc);
 
         StudentErrorResponse response = buildResponse(exc, HttpStatus.BAD_REQUEST);
 

@@ -13,9 +13,9 @@ import java.util.List;
 
 public interface IStudentService {
     List<Student> getStudents();
-    Student getStudentById(int id) throws ServiceException;
+    Student getStudentById(int id);
     Student addStudent(Student student);
-    Student updateStudent(Student student) throws ServiceException;
-    void deleteStudentById(int id) throws ServiceException;
+    Student updateStudent(Student student);
+    void deleteStudentById(int id);
     boolean isExistById(int id);
 }

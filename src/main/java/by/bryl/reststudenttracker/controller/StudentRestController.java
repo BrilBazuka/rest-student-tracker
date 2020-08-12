@@ -39,7 +39,7 @@ public class StudentRestController {
     }
 
     @GetMapping("/list/{id}")
-    public Student getStudent(@PathVariable int id) throws ServiceException {
+    public Student getStudent(@PathVariable int id){
         return studentService.getStudentById(id);
     }
 
@@ -49,12 +49,12 @@ public class StudentRestController {
     }
 
     @PutMapping("/list")
-    public Student updateStudent(@RequestBody Student student) throws ServiceException {
+    public Student updateStudent(@RequestBody Student student){
         return studentService.updateStudent(student);
     }
 
     @DeleteMapping("/list/{id}")
-    public String deleteStudent(@PathVariable int id) throws ServiceException {
+    public String deleteStudent(@PathVariable int id){
         studentService.deleteStudentById(id);
         return "Deleted employee id: " + id;
     }
